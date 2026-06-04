@@ -632,16 +632,16 @@ interface Service { id: string; title: string; description: string; price: numbe
 interface Testimonial { id: string; name: string; role: string; quote: string; }
 interface GalleryItem { id: string; title: string; description: string; image: { url: string; alt?: string }; }
 
-const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || "http://localhost:3001";
+const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || "http://localhost:3000";
 
 const FALLBACK_SERVICES: Service[] = [
-  { id: "1", title: "Exterior Wash", description: "Remove dirt, dust, mud, and road grime for a spotless finish.", price: 499 },
-  { id: "2", title: "Foam Wash", description: "Deep cleaning with premium foam technology.", price: 599 },
-  { id: "3", title: "Interior Cleaning", description: "Dashboard, seats, mats, and cabin cleaning.", price: 799 },
-  { id: "4", title: "Vacuum Cleaning", description: "Complete dust removal from interiors.", price: 399 },
-  { id: "5", title: "Wax Polish", description: "Restore shine and protect your vehicle paint.", price: 999 },
-  { id: "6", title: "Bike Wash", description: "Professional cleaning for motorcycles and scooters.", price: 199 },
-  { id: "7", title: "SUV & Premium Care", description: "Special care for larger and premium vehicles.", price: 1499 },
+  { id: "1", title: "Exterior Wash", description: "Remove dirt, dust, mud, and road grime for a spotless finish.", price: 499, image: { url: "/images/exterior.webp", alt: "Exterior Wash" } },
+  { id: "2", title: "Foam Wash", description: "Deep cleaning with premium foam technology.", price: 599, image: { url: "/images/foam.avif", alt: "Foam Wash" } },
+  { id: "3", title: "Interior Cleaning", description: "Dashboard, seats, mats, and cabin cleaning.", price: 799, image: { url: "/images/close-up-hand-interior-car-cleaning-free-photo.jpg", alt: "Interior Cleaning" } },
+  { id: "4", title: "Vacuum Cleaning", description: "Complete dust removal from interiors.", price: 399, image: { url: "/images/vacuum-clean.jpg", alt: "Vacuum Cleaning" } },
+  { id: "5", title: "Wax Polish", description: "Restore shine and protect your vehicle paint.", price: 999, image: { url: "/images/Wax Polish.jpg", alt: "Wax Polish" } },
+  { id: "6", title: "Bike Wash", description: "Professional cleaning for motorcycles and scooters.", price: 199, image: { url: "/images/bikewash.jpg", alt: "Bike Wash" } },
+  { id: "7", title: "SUV & Premium Care", description: "Special care for larger and premium vehicles.", price: 1499, image: { url: "/images/suv.webp", alt: "SUV & Premium Care" } },
 ];
 
 const FALLBACK_TESTIMONIALS: Testimonial[] = [
@@ -649,6 +649,13 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
   { id: "2", name: "Sarah Joseph", role: "Foam Wash Customer", quote: "Professional team and remarkably quick turnaround. The results exceeded every expectation." },
   { id: "3", name: "Akhil Raj", role: "Full Detailing Customer", quote: "An outstanding detailing service with results that speak for themselves. Truly exceptional." },
 ];
+
+const FALLBACK_GALLERY: GalleryItem[] = [
+  { id: "1", title: "Before & After — Exterior", description: "Professional cleaning for a spotless finish.", image: { url: "/images/before&after1.webp", alt: "Before After" } },
+  { id: "2", title: "Before & After — Detail", description: "Restoring the original brilliance.", image: { url: "/images/before&after2.webp", alt: "Before After 2" } },
+  { id: "3", title: "Full Detailing Result", description: "Showroom quality inside and out.", image: { url: "/images/before&after3.jpg", alt: "Full Detailing" } },
+];
+
 
 // ─── Booking Form ─────────────────────────────────────────
 function BookingForm({ services, cmsUrl }: { services: Service[], cmsUrl: string }) {
@@ -796,7 +803,7 @@ function ReviewForm({ services, cmsUrl }: { services: Service[], cmsUrl: string 
 export default function Home() {
   const [services] = useState<Service[]>(FALLBACK_SERVICES);
   const [testimonials, setTestimonials] = useState<Testimonial[]>(FALLBACK_TESTIMONIALS);
-  const [gallery] = useState<GalleryItem[]>([]);
+  const [gallery, setGallery] = useState<GalleryItem[]>(FALLBACK_GALLERY);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
