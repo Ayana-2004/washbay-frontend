@@ -10,7 +10,7 @@ interface ServiceImage { url: string; alt?: string; }
 interface Service { id: string; title: string; description: string; price: number; image?: ServiceImage; }
 interface Testimonial { id: string; name: string; role: string; quote: string; }
 interface GalleryItem { id: string; title: string; description: string; image: { url: string; alt?: string }; }
-interface PayloadServiceDoc { id: string; title: string; description: string; price: number; image?: { url: string; alt?: string }; }
+// interface PayloadServiceDoc { id: string; title: string; description: string; price: number; image?: { url: string; alt?: string }; }
 interface PayloadTestimonialDoc { id: string; name: string; role: string; quote: string; }
 interface PayloadGalleryDoc { id: string; title: string; description: string; image: { url: string; alt?: string }; }
 
@@ -180,18 +180,18 @@ export default function Home() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(FALLBACK_TESTIMONIALS);
   const [gallery, setGallery] = useState<GalleryItem[]>([]);
 
-  useEffect(() => {
-    fetch(`${CMS_URL}/api/services?limit=10&depth=1`)
-      .then(res => res.json())
-      .then(data => {
-        if (data?.docs?.length > 0) {
-          setServices(data.docs.map((doc: PayloadServiceDoc) => ({
-            id: doc.id, title: doc.title, description: doc.description, price: doc.price,
-            image: doc.image ? { url: doc.image.url.startsWith("http") ? doc.image.url : `${CMS_URL}${doc.image.url}`, alt: doc.image.alt || doc.title } : undefined,
-          })));
-        }
-      }).catch(() => {});
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${CMS_URL}/api/services?limit=10&depth=1`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (data?.docs?.length > 0) {
+  //         setServices(data.docs.map((doc: PayloadServiceDoc) => ({
+  //           id: doc.id, title: doc.title, description: doc.description, price: doc.price,
+  //           image: doc.image ? { url: doc.image.url.startsWith("http") ? doc.image.url : `${CMS_URL}${doc.image.url}`, alt: doc.image.alt || doc.title } : undefined,
+  //         })));
+  //       }
+  //     }).catch(() => {});
+  // }, []);
 
   useEffect(() => {
     fetch(`${CMS_URL}/api/testimonials?limit=10`)
@@ -205,18 +205,18 @@ export default function Home() {
       }).catch(() => {});
   }, []);
 
-  useEffect(() => {
-    fetch(`${CMS_URL}/api/gallery?limit=10&depth=1`)
-      .then(res => res.json())
-      .then(data => {
-        if (data?.docs?.length > 0) {
-          setGallery(data.docs.map((doc: PayloadGalleryDoc) => ({
-            id: doc.id, title: doc.title, description: doc.description,
-            image: { url: doc.image.url.startsWith("http") ? doc.image.url : `${CMS_URL}${doc.image.url}`, alt: doc.image.alt || doc.title },
-          })));
-        }
-      }).catch(() => {});
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${CMS_URL}/api/gallery?limit=10&depth=1`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (data?.docs?.length > 0) {
+  //         setGallery(data.docs.map((doc: PayloadGalleryDoc) => ({
+  //           id: doc.id, title: doc.title, description: doc.description,
+  //           image: { url: doc.image.url.startsWith("http") ? doc.image.url : `${CMS_URL}${doc.image.url}`, alt: doc.image.alt || doc.title },
+  //         })));
+  //       }
+  //     }).catch(() => {});
+  // }, []);
 
   return (
     <main className="min-h-screen" style={{ background: "#080808", color: "#e8e2d9", fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
