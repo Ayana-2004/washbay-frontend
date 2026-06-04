@@ -678,7 +678,7 @@ function BookingForm({ services, cmsUrl }: { services: Service[], cmsUrl: string
       await fetch(`${cmsUrl}/api/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, vehicleType, service: selectedService, date, time, status: 'pending' }),
+       body: JSON.stringify({ name, phone, vehicleType, service: selectedService, date: new Date(date).toISOString(), time, status: 'pending' }),
       })
       setSubmitted(true)
     } catch {
@@ -690,7 +690,7 @@ function BookingForm({ services, cmsUrl }: { services: Service[], cmsUrl: string
   if (submitted) {
     return (
       <div style={{ border: "1px solid var(--border)", padding: "3.5rem", background: "var(--surface)", textAlign: "center" }}>
-        <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🚗</div>
+        {/* <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🚗</div> */}
         <h3 style={{ fontFamily: "var(--serif)", fontSize: "2rem", color: "var(--gold)", marginBottom: "0.75rem" }}>Booking Confirmed!</h3>
         <p style={{ fontFamily: "var(--sans)", fontSize: "13px", color: "var(--text-muted)", letterSpacing: "0.05em" }}>
           We&apos;ll contact you shortly to confirm your appointment.
