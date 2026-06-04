@@ -748,7 +748,7 @@ function ReviewForm({ services, cmsUrl }: { services: Service[], cmsUrl: string 
       await fetch(`${cmsUrl}/api/testimonials`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, review: comment, rating: String(rating), role: service || 'Customer' }),
+        body: JSON.stringify({ name, quote: comment, rating: String(rating), role: service || 'Customer' }),
       })
       setSubmitted(true)
     } catch {
