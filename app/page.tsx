@@ -183,15 +183,24 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
  useEffect(() => {
-  fetch(`${CMS_URL}/api/testimonials?limit=10`)
-    .then(res => res.json())
-    .then(data => {
-      if (data?.docs?.length > 0) {
-        setTestimonials(data.docs.map((doc: { id: string; name: string; role: string; quote: string }) => ({
-          id: doc.id, name: doc.name, role: doc.role, quote: doc.quote,
-        })));
-      }
-    }).catch(() => {});
+  const fetchWithRetry = (attempt: number) => {
+    fetch(`${CMS_URL}/api/testimonials?limit=10`)
+      .then(res => res.json())
+      .then(data => {
+        if (data?.docs?.length > 0) {
+          setTestimonials(data.docs.map((doc: { id: string; name: string; role: string; quote: string }) => ({
+            id: doc.id, name: doc.name, role: doc.role, quote: doc.quote,
+          })));
+        }
+      })
+      .catch(() => {
+        // Retry up to 3 times with 5 second delay (handles Render cold start)
+        if (attempt < 3) {
+          setTimeout(() => fetchWithRetry(attempt + 1), 5000);
+        }
+      });
+  };
+  fetchWithRetry(1);
 }, []);
 
 // ─── Keep CMS alive ───────────────────────────────────────
