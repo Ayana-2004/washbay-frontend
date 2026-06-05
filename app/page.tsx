@@ -599,40 +599,33 @@ useEffect(() => {
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="section-pad" style={{ background: "var(--surface)" }}>
-        <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-            <p className="overline" style={{ justifyContent: "center", marginBottom: "1.5rem" }}>Client Voices</p>
-            <h2 style={{ fontFamily: "var(--serif)", fontSize: "clamp(2rem, 4vw, 4rem)", fontWeight: 300, color: "#f0ebe3" }}>Trusted By Our Customers</h2>
+     <section className="section-pad" style={{ background: "var(--surface)" }}>
+  <div className="container">
+    <div style={{ textAlign: "center", marginBottom: "5rem" }}>
+      <p className="overline" style={{ justifyContent: "center", marginBottom: "1.5rem" }}>Client Voices</p>
+      <h2 style={{ fontFamily: "var(--serif)", fontSize: "clamp(2rem, 4vw, 4rem)", fontWeight: 300, color: "#f0ebe3" }}>Trusted By Our Customers</h2>
+    </div>
+    <div className="testimonials-grid">
+      {(testimonials.length > 0 ? testimonials : FALLBACK_TESTIMONIALS).map((t) => (
+        <div key={t.id} className="testimonial-card">
+          <p style={{ fontFamily: "var(--serif)", fontSize: "1.25rem", fontWeight: 300, fontStyle: "italic", lineHeight: 1.6, color: "rgba(232,226,217,0.8)", marginBottom: "2rem" }}>
+            &ldquo;{t.quote}&rdquo;
+          </p>
+          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem", display: "flex", alignItems: "center", gap: "12px" }}>
+            <div style={{ width: "36px", height: "36px", border: "1px solid var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <span style={{ fontFamily: "var(--serif)", fontSize: "14px", color: "var(--gold)" }}>{t.name[0]}</span>
+            </div>
+            <div>
+              <p style={{ fontFamily: "var(--sans)", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", color: "#f0ebe3" }}>{t.name}</p>
+              <p style={{ fontFamily: "var(--sans)", fontSize: "10px", letterSpacing: "0.15em", color: "var(--gold)", marginTop: "2px" }}>{t.role}</p>
+            </div>
+            <div style={{ marginLeft: "auto", color: "var(--gold)", fontSize: "14px" }}>★★★★★</div>
           </div>
-         {testimonials.length === 0 ? (
-  <div style={{ textAlign: "center", padding: "4rem", color: "var(--text-muted)", fontFamily: "var(--sans)", fontSize: "13px", letterSpacing: "0.1em", border: "1px solid var(--border)" }}>
-    No reviews yet. Be the first to leave a review!
-  </div>
-) : (
-  <div className="testimonials-grid">
-    {testimonials.map((t) => (
-      <div key={t.id} className="testimonial-card">
-        <p style={{ fontFamily: "var(--serif)", fontSize: "1.25rem", fontWeight: 300, fontStyle: "italic", lineHeight: 1.6, color: "rgba(232,226,217,0.8)", marginBottom: "2rem" }}>
-          &ldquo;{t.quote}&rdquo;
-        </p>
-        <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem", display: "flex", alignItems: "center", gap: "12px" }}>
-          <div style={{ width: "36px", height: "36px", border: "1px solid var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <span style={{ fontFamily: "var(--serif)", fontSize: "14px", color: "var(--gold)" }}>{t.name[0]}</span>
-          </div>
-          <div>
-            <p style={{ fontFamily: "var(--sans)", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", color: "#f0ebe3" }}>{t.name}</p>
-            <p style={{ fontFamily: "var(--sans)", fontSize: "10px", letterSpacing: "0.15em", color: "var(--gold)", marginTop: "2px" }}>{t.role}</p>
-          </div>
-          <div style={{ marginLeft: "auto", color: "var(--gold)", fontSize: "14px" }}>★★★★★</div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
-)}
-        </div>
-      </section>
-
+</section>
       {/* ─── BOOKING ─── */}
       <section id="booking" className="section-pad" style={{ background: "var(--obsidian)" }}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
