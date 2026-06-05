@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WashBay Balussery | Premium Car Wash & Detailing",
     description: "Professional car wash and detailing services in Balussery, Kozhikode. Serving Koorachundu, Naduvannur, Ulliyeri, Atholi and surrounding areas.",
-    url: "https://washbay-frontend-git-main-ayana-2004s-projects.vercel.app",
+    url: "https://washbay-frontend.vercel.app",
     siteName: "WashBay Balussery",
-    images: [{ url: "https://washbay-frontend-git-main-ayana-2004s-projects.vercel.app/images/carwashh.png", width: 1200, height: 630, alt: "WashBay Car Wash Balussery" }],
+    images: [{ url: "https://washbay-frontend.vercel.app/images/carwashh.png", width: 1200, height: 630, alt: "WashBay Car Wash Balussery" }],
     locale: "en_IN",
     type: "website",
   },
