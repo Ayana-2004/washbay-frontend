@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Professional car wash and detailing services in Balussery, Kozhikode. Serving Koorachundu, Naduvannur, Ulliyeri, Atholi and surrounding areas.",
     url: "https://washbay-frontend-git-main-ayana-2004s-projects.vercel.app",
     siteName: "WashBay Balussery",
-    images: [{ url: "/images/carwashh.png", width: 1200, height: 630, alt: "WashBay Car Wash Balussery" }],
+    images: [{ url: "https://washbay-frontend-git-main-ayana-2004s-projects.vercel.app/images/carwashh.png", width: 1200, height: 630, alt: "WashBay Car Wash Balussery" }],
     locale: "en_IN",
     type: "website",
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WashBay Balussery | Premium Car Wash",
     description: "Professional car wash and detailing in Balussery, Kozhikode.",
-    images: ["/images/carwashh.png"],
+    images: ["https://washbay-frontend-git-main-ayana-2004s-projects.vercel.app/images/carwashh.png"],
   },
   icons: {
     icon: "/images/washbaylogo-removebg-preview.png",
